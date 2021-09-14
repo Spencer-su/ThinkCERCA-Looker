@@ -1,0 +1,97 @@
+view: rubric_items {
+  sql_table_name: tcdw.rubric_items ;;
+  drill_fields: [id]
+
+  dimension: id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}."id" ;;
+  }
+
+  dimension_group: _end {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."_end" ;;
+  }
+
+  dimension: _hid {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}."_hid" ;;
+  }
+
+  dimension_group: _start {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."_start" ;;
+  }
+
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."created_at" ;;
+  }
+
+  dimension: mastery_level {
+    type: number
+    sql: ${TABLE}."mastery_level" ;;
+  }
+
+  dimension: position {
+    type: number
+    sql: ${TABLE}."position" ;;
+  }
+
+  dimension: rubric_category_id {
+    type: number
+    sql: ${TABLE}."rubric_category_id" ;;
+  }
+
+  dimension: statement {
+    type: string
+    sql: ${TABLE}."statement" ;;
+  }
+
+  dimension_group: updated {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}."updated_at" ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [id, dim_rubric_items.count]
+  }
+}
