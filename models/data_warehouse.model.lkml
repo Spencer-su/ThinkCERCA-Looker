@@ -111,7 +111,6 @@ explore: assignments {
   }
 }
 
-explore: batch_control {}
 
 explore: dim_assessment_items {
   join: lesson_assessments {
