@@ -11,79 +11,7 @@ datagroup: test2_default_datagroup {
 
 persist_with: test2_default_datagroup
 
-explore: assessment_items {
-  join: lesson_assessments {
-    type: left_outer
-    sql_on: ${assessment_items.lesson_assessment_id} = ${lesson_assessments.id} ;;
-    relationship: many_to_one
-  }
 
-  join: student_assignments {
-    type: left_outer
-    sql_on: ${assessment_items.student_assignment_id} = ${student_assignments.id} ;;
-    relationship: many_to_one
-  }
-
-  join: school_class_users {
-    type: left_outer
-    sql_on: ${student_assignments.school_class_user_id} = ${school_class_users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: assignments {
-    type: left_outer
-    sql_on: ${student_assignments.assignment_id} = ${assignments.cerca_set_assignment_id} ;;
-    relationship: many_to_one
-  }
-
-  join: institution_users {
-    type: left_outer
-    sql_on: ${school_class_users.institution_user_id} = ${institution_users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${school_class_users.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: institutions {
-    type: left_outer
-    sql_on: ${institution_users.institution_id} = ${institutions.id} ;;
-    relationship: many_to_one
-  }
-
-  join: districts {
-    type: left_outer
-    sql_on: ${institutions.district_id} = ${districts.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lessons {
-    type: left_outer
-    sql_on: ${assignments.lesson_id} = ${lessons.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lesson_modules {
-    type: left_outer
-    sql_on: ${assignments.lesson_module_id} = ${lesson_modules.id} ;;
-    relationship: many_to_one
-  }
-
-  join: rubrics {
-    type: left_outer
-    sql_on: ${assignments.rubric_id} = ${rubrics.id} ;;
-    relationship: many_to_one
-  }
-
-  join: standards {
-    type: left_outer
-    sql_on: ${rubrics.standard_id} = ${standards.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: assignments {
   join: lessons {
@@ -112,130 +40,7 @@ explore: assignments {
 }
 
 
-explore: dim_assessment_items {
-  join: lesson_assessments {
-    type: left_outer
-    sql_on: ${dim_assessment_items.lesson_assessment_id} = ${lesson_assessments.id} ;;
-    relationship: many_to_one
-  }
 
-  join: assessment_items {
-    type: left_outer
-    sql_on: ${dim_assessment_items.assessment_item_id} = ${assessment_items.id} ;;
-    relationship: many_to_one
-  }
-
-  join: student_assignments {
-    type: left_outer
-    sql_on: ${dim_assessment_items.student_assignment_id} = ${student_assignments.id} ;;
-    relationship: many_to_one
-  }
-
-  join: school_class_users {
-    type: left_outer
-    sql_on: ${student_assignments.school_class_user_id} = ${school_class_users.id} ;;
-    relationship: many_to_one
-  }
-
-
-  join: assignments {
-    type: left_outer
-    sql_on: ${student_assignments.assignment_id} = ${assignments.cerca_set_assignment_id} ;;
-    relationship: many_to_one
-  }
-
-  join: institution_users {
-    type: left_outer
-    sql_on: ${school_class_users.institution_user_id} = ${institution_users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${school_class_users.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: institutions {
-    type: left_outer
-    sql_on: ${institution_users.institution_id} = ${institutions.id} ;;
-    relationship: many_to_one
-  }
-
-  join: districts {
-    type: left_outer
-    sql_on: ${institutions.district_id} = ${districts.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lessons {
-    type: left_outer
-    sql_on: ${assignments.lesson_id} = ${lessons.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lesson_modules {
-    type: left_outer
-    sql_on: ${assignments.lesson_module_id} = ${lesson_modules.id} ;;
-    relationship: many_to_one
-  }
-
-  join: rubrics {
-    type: left_outer
-    sql_on: ${assignments.rubric_id} = ${rubrics.id} ;;
-    relationship: many_to_one
-  }
-
-  join: standards {
-    type: left_outer
-    sql_on: ${rubrics.standard_id} = ${standards.id} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: dim_assignments {
-  join: lessons {
-    type: left_outer
-    sql_on: ${dim_assignments.lesson_id} = ${lessons.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lesson_modules {
-    type: left_outer
-    sql_on: ${dim_assignments.lesson_module_id} = ${lesson_modules.id} ;;
-    relationship: many_to_one
-  }
-
-  join: rubrics {
-    type: left_outer
-    sql_on: ${dim_assignments.rubric_id} = ${rubrics.id} ;;
-    relationship: many_to_one
-  }
-
-  join: assignments {
-    type: left_outer
-    sql_on: ${dim_assignments.assignment_id} = ${assignments.cerca_set_assignment_id} ;;
-    relationship: many_to_one
-  }
-
-  join: standards {
-    type: left_outer
-    sql_on: ${rubrics.standard_id} = ${standards.id} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: dim_class_primary_teachers {}
-
-explore: dim_date {}
-
-explore: dim_districts {
-  join: districts {
-    type: left_outer
-    sql_on: ${dim_districts.district_id} = ${districts.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: dim_institutions {
   join: districts {
@@ -325,13 +130,6 @@ explore: dim_lesson_assessment {
   }
 }
 
-explore: dim_lesson_module {
-  join: lesson_modules {
-    type: left_outer
-    sql_on: ${dim_lesson_module.lesson_module_id} = ${lesson_modules.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: dim_lesson_subjects {
   join: lesson_subjects {
@@ -353,13 +151,6 @@ explore: dim_lesson_subjects {
   }
 }
 
-explore: dim_lessons {
-  join: lessons {
-    type: left_outer
-    sql_on: ${dim_lessons.lesson_id} = ${lessons.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: dim_rubric_categories {
   join: rubrics {
@@ -1459,73 +1250,6 @@ explore: rubrics {
   }
 }
 
-explore: sa_counts {
-  join: student_assignments {
-    type: left_outer
-    sql_on: ${sa_counts.student_assignment_id} = ${student_assignments.id} ;;
-    relationship: many_to_one
-  }
-
-  join: school_class_users {
-    type: left_outer
-    sql_on: ${student_assignments.school_class_user_id} = ${school_class_users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: assignments {
-    type: left_outer
-    sql_on: ${student_assignments.assignment_id} = ${assignments.cerca_set_assignment_id} ;;
-    relationship: many_to_one
-  }
-
-  join: institution_users {
-    type: left_outer
-    sql_on: ${school_class_users.institution_user_id} = ${institution_users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${school_class_users.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: institutions {
-    type: left_outer
-    sql_on: ${institution_users.institution_id} = ${institutions.id} ;;
-    relationship: many_to_one
-  }
-
-  join: districts {
-    type: left_outer
-    sql_on: ${institutions.district_id} = ${districts.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lessons {
-    type: left_outer
-    sql_on: ${assignments.lesson_id} = ${lessons.id} ;;
-    relationship: many_to_one
-  }
-
-  join: lesson_modules {
-    type: left_outer
-    sql_on: ${assignments.lesson_module_id} = ${lesson_modules.id} ;;
-    relationship: many_to_one
-  }
-
-  join: rubrics {
-    type: left_outer
-    sql_on: ${assignments.rubric_id} = ${rubrics.id} ;;
-    relationship: many_to_one
-  }
-
-  join: standards {
-    type: left_outer
-    sql_on: ${rubrics.standard_id} = ${standards.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: school_class_users {
   join: institution_users {
