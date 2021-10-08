@@ -13,8 +13,7 @@ explore: rpt_teacher_rank {
     type: inner
     relationship:  many_to_one
     sql_on: ${school_class_users.user_id} = ${rpt_teacher_rank.teacher_id} ;;
-    sql_where: "school_class_users.membership_type" = 2
-    and "school_class_users.membership_type" = 3 ;;
+    sql_where: "membership_type" = 2 and "membership_type" = 3 ;;
 
   }
 }
