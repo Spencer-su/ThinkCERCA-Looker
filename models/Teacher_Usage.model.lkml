@@ -10,7 +10,7 @@ explore: rpt_teacher_rank {
 
   join: school_class_users {
     view_label: "2. Rostering"
-    type: inner
+    type: full_outer
     relationship:  many_to_one
     sql_on: ${school_class_users.user_id} = ${rpt_teacher_rank.teacher_id} ;;
 
