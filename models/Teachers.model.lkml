@@ -14,7 +14,7 @@ explore: rpt_item_level_standards {
   join: rpt_teacher_rank {
     view_label: "2. Grading Overview"
     type: left_outer
-    relationship: many_to_one
+    relationship: one_to_one
     sql_on: ${rpt_item_level_standards.teacher_id} = ${rpt_teacher_rank.teacher_id} ;;
   }
 }
